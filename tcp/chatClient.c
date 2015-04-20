@@ -31,10 +31,11 @@ int main() {
 	if ( connect( sockfd,(struct sockaddr*)&server, sizeof(server) ) < 0  ) {
 		perror( "Cannot connect to TCP" );
 	}
-	
 	char msg[100], recvmsg[100];
 	bind (sockfd, (struct sockaddr*)&client, sizeof (client));
+	
 	for(;;) {
+
 		printf( "Client>> " );
 		scanf( "%s", msg );
 		if ( send( sockfd, msg, 100, 0  ) < 0 ) {
@@ -43,6 +44,7 @@ int main() {
 		if ( recv( sockfd, recvmsg, 100, 0 ) < 0 ) {
 			perror( "client recieving failed" );
 		}
+		printf("Server says: %s\n", recvmsg );
 	}
 	close( sockfd );
 	

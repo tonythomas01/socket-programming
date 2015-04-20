@@ -32,12 +32,12 @@ int main() {
 		perror( "listen" );
 	}
 	clientlen = sizeof( client );
+	clientfd = accept( sockfd, ( struct sockaddr * )&client, &clientlen );
+	if ( clientfd <  0 ) {
+	  perror( "accept" );
+	}
+	
 	for (;;) {
-		clientfd = accept( sockfd, ( struct sockaddr * )&client, &clientlen );
-		if ( clientfd <  0 ) {
-			perror( "accept" );
-		}
-		
 		if ( recv( clientfd, rmsg, 100, 0 )  < 0 ){
 			perror( "receive" );
 		}
