@@ -21,7 +21,7 @@ int main() {
 	bzero ((char*)&server, sizeof (server));
 	server.sin_family = PF_INET;
 	inet_aton("127.0.0.1", &server.sin_addr); 
-	server.sin_port = htons (8698); 
+	server.sin_port = htons (8699);
 	
 	bzero((char*) &client, sizeof(client));
 	client.sin_family = AF_INET;
@@ -37,7 +37,7 @@ int main() {
 	for(;;) {
 
 		printf( "Client>> " );
-		scanf( "%s", msg );
+		scanf( " %[^\n]", msg );
 		if ( send( sockfd, msg, 100, 0  ) < 0 ) {
 			perror( "client sending send" );
 		}

@@ -23,7 +23,7 @@ int main() {
 	bzero ((char*) &server, sizeof (server)); 
 	server.sin_family = AF_INET;
 	inet_aton ("127.0.0.1", &server.sin_addr); 
-	server.sin_port = htons(8698);
+	server.sin_port = htons(8699);
 	
 	if ( bind ( sockfd, (struct sockaddr*)&server, sizeof (server) ) < 0 ) {
 		perror( "bind error " );
@@ -43,7 +43,7 @@ int main() {
 		}
 		printf("Client says >> %s \n", rmsg );
 		printf( "Server >> ");
-		scanf( "%s", serverMessage );
+		scanf( " %[^\n]", serverMessage );
 		if ( send( clientfd, serverMessage, 100, 0  ) < 0 ) { 
 			perror( "serever sending fail" );
 		}
