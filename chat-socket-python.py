@@ -71,7 +71,7 @@ class ChatServer(threading.Thread):
                     self.storeddata= ""
             elif data.startswith('help'):
                 conn.sendall(self.helpmessage)
-            elif data.startswith('quit '):
+            elif data.startswith('quit'):
                 break
             elif data: 
                 conn.sendall("ERROR: Invalid command. Please type help for HELP\n")
